@@ -4,7 +4,18 @@
       <h3>
         <span>新規投稿</span>
       </h3>
-      <%# フォームを設置 %>
+      <%= form_with(model: @post, url: posts_path, method: 'post', local: true) do |f| %>
+        <div class="form_area">
+          <div class="form_area__field">
+            <%= f.text_area :content, placeholder: "投稿内容を入力" %>
+          </div>
+        </div>
+        <div class="form_area">
+          <div class="form_area__action">
+            <%= f.submit "投稿", class: "form_area__action__btn" %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
