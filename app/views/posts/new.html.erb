@@ -5,7 +5,7 @@
         <span>新規投稿</span>
       </h3>
       <ul>
-        <%= @post.errors.full_messages.each do |message| %>
+        <% @post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
