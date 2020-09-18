@@ -4,6 +4,11 @@
       <h3>
         <span>新規投稿</span>
       </h3>
+      <ul>
+        <%= @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
       <%= form_with(model: @post, url: posts_path, method: 'post', local: true) do |f| %>
         <div class="form_area">
           <div class="form_area__field">
