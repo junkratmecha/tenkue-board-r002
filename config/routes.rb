@@ -7,5 +7,9 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
+<<<<<<< add_show_function
   resources :posts, only: :show
+=======
+  resources :posts, only: :index
+>>>>>>> master
 end
