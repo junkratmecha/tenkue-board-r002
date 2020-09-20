@@ -34,7 +34,7 @@
             <% if user_signed_in? && current_user == post.user %>
               <ul class="post__bottom_box__admin_actions">
                 <%= link_to '編集', edit_post_path(post) %>
-                <li>削除
+                <%= link_to '削除', post_path(post), data: { method: 'delete', confirm: '本当に削除しますか？'} %>
               </ul>
             <% end %>
           </div>
