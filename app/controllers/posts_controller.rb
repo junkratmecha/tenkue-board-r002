@@ -9,11 +9,16 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update
-      redirect_to root_path, notice: '編集できました'
+    if @post.update(post_params)
+      redirect_to posts_path, notice: '編集できました'
     else
       flash.now[:error] = '更新できませんでした'
       render :edit
     end
+  end
+
+  private
+  def post_params
+    params.required(:post).permit(:content)
   end
 end
