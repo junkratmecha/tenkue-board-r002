@@ -11,7 +11,7 @@
         <span>ユーザー名 さん</span>
       </li>
       <li class="header__bar__user_nav__btn">
-        ログアウト
+        <%= link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' } %>
       </li>
       <li class="header__bar__user_nav__btn">
         投稿する
@@ -23,7 +23,7 @@
         ゲストログイン
       </li>
       <li class="header__bar__user_nav__btn">
-        ログイン
+        <%= link_to 'ログイン', new_user_session_path %>
       </li>
       <li class="header__bar__user_nav__btn">
         新規登録
