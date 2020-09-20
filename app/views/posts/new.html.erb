@@ -9,7 +9,7 @@
           <li><%= message %></li>
         <% end %>
       </ul>
-      <%= form_with(model: @post, url: posts_path, method: 'post', local: true) do |f| %>
+      <%= form_with(model: @post, local: true) do |f| %>
         <div class="form_area">
           <div class="form_area__field">
             <%= f.text_area :content, placeholder: "投稿内容を入力" %>
