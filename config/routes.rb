@@ -7,5 +7,5 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
-  resources :posts, only: [:index, :edit, :update]
+  resources :posts, only: [:index, :edit, :update, :destroy]
 end
