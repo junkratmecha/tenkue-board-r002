@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :set_post, only: [:edit, :update]
+  before_action :confirm_user, only: [:edit]
 
   def index
     @posts = Post.all.includes(:user)
@@ -31,5 +32,12 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def confirm_user
+    set_post
+    if current_user.id != @postuser.id
+      redirect_to root_path, notice: 'アクセスできません'
+    end
   end
 end
