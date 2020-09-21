@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :authenticate_user!, only: :new
+  before_action :set_post, only: :show
   
   def index
     @posts = Post.all.includes(:user)
@@ -20,12 +21,16 @@ class PostsController < ApplicationController
   end
   
   def show
-    @post = Post.find(params[:id])
   end
 
   private
+
   def post_params
     params.required(:post).permit(:content)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 
 end
