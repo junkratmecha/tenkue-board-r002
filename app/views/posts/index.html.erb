@@ -27,12 +27,14 @@
                 <span></span>
               </li>
               <li>
-                <%= link_to post_like_path(post), data: { method: 'post' } do %>
-                  <i class="far fa-heart"></i>
-                <% end %>
-                <span></span>
-                <%= link_to post_like_path(post), data: { method: 'delete' } do %>
-                  <i class="fas fa-heart"></i>
+                <% if current_user.has_liked?(post) %>
+                  <%= link_to post_like_path(post.id), data: { method: 'delete' } do %>
+                    <i class="fas fa-heart"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to post_like_path(post.id), data: { method: 'post' } do %>
+                    <i class="far fa-heart"></i>
+                  <% end %>
                 <% end %>
               </li>
             </ul>
