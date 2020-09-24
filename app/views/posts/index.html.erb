@@ -26,27 +26,7 @@
                 <i class="far fa-comment-alt"></i>
                 <span></span>
               </li>
-              <li>
-                <% if current_user.has_liked?(post) %>
-                  <%= link_to post_like_path(post.id), data: { method: 'delete' } do %>
-                    <i class="fas fa-heart"></i>
-                  <% end %>
-                  <span>
-                  <% if post.likes.count > 0 %>
-                    <%= post.likes.count %>
-                  <% end %>
-                  </span>
-                <% else %>
-                  <%= link_to post_like_path(post.id), data: { method: 'post' } do %>
-                    <i class="far fa-heart"></i>
-                  <% end %>
-                  <span>
-                  <% if post.likes.count > 0 %>
-                    <%= post.likes.count %>
-                  <% end %>
-                  </span>
-                <% end %>
-              </li>
+              <%= render partial: 'likes/like', locals: { post: post } %>
             </ul>
             <% if user_signed_in? && current_user == post.user %>
               <ul class="post__bottom_box__admin_actions">
