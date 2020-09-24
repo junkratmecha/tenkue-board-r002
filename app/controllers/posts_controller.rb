@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-  before_action :set_post, only: [:edit, :update]
+  before_action :set_post, only: [:edit, :update, :show]
   before_action :confirm_user, only: [:edit]
 
   def index
@@ -15,10 +15,13 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to post_path
+      redirect_to root_path
     else
       render :new
     end
+  end
+  
+  def show
   end
 
   def edit
@@ -40,6 +43,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.required(:post).permit(:content)
   end
@@ -54,4 +58,5 @@ class PostsController < ApplicationController
       redirect_to root_path, notice: 'アクセスできません'
     end
   end
+  
 end
