@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
 
   root to: 'posts#index'
+  
+  resources :posts
 
   resources :posts, only: [:index, :new, :create] do
     resource :like, only: [:create, :destroy]

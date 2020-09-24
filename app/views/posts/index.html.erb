@@ -6,12 +6,40 @@
   </div>
   <div class="post_wrapper__content">
     <ul class="post_wrapper__content__post_list">
+    <% if @posts.any? %>
       <% @posts.each do |post| %>
-      <li>
-        <div class="post">
-          <div class="post__top_box">
-            <div class="post__top_box__name">
-              <span>投稿者：<%= post.user.name %></span>
+        <li>
+          <%= link_to post_path(post) do %>
+            <div class="post">
+              <div class="post__top_box">
+                <div class="post__top_box__name">
+                  <span>投稿者：<%= post.user.name %></span>
+                </div>
+                <div class="post__top_box__time">
+                  <span>投稿日時：<%= l post.created_at, format: :tenkue %></span>
+                </div>
+              </div>  
+              <div class="post__middle_box">
+                <span>投稿内容：<%= post.content %></span>
+              </div>
+              <div class="post__bottom_box">
+                <ul class="post__bottom_box__user_actions">
+                  <li>
+                    <i class="far fa-comment-alt"></i>
+                    <span></span>
+                  </li>
+                  <li>
+                    <i class="far fa-heart"></i>
+                    <span></span>
+                  </li>
+                </ul>
+                <% if user_signed_in? && current_user == post.user %>
+                  <ul class="post__bottom_box__admin_actions">
+                    <%= link_to '編集', edit_post_path(post) %>
+                    <%= link_to '削除', post_path(post), data: { method: 'delete', confirm: '本当に削除しますか？'} %>
+                  </ul>
+                <% end %>
+              </div>
             </div>
             <div class="post__top_box__time">
               <span>投稿日時：<%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
@@ -38,6 +66,9 @@
         </div>
       </li>
       <% end %>
+    <% else %>
+      <span>まだ投稿されたスレッドはありません。</span>
+    <% end %>
     </ul>
   </div>
 </div>
