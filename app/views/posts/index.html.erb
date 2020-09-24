@@ -27,7 +27,9 @@
                 <span></span>
               </li>
               <li>
-                <i class="far fa-heart"></i>
+                <%= link_to post_like_path(post), data: { method: 'post' } do %>
+                  <i class="far fa-heart"></i>
+                <% end %>
                 <span></span>
               </li>
             </ul>
