@@ -1,14 +1,21 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_post
+
+
   def create
-    post = Post.find(params[:post_id])
-    post.likes.create!(user_id: current_user.id)  
+    current_user.likes.create!(post_id: params[:post_id])  
   end
 
   def destroy
-    post = Post.find(params[:post_id])
-    like = post.likes.find_by!(user_id: current_user.id)
-    
+    like = current_user.likes.find_by!(post_id: params[:post_id])
+
     like.destroy!
+  end
+
+  private
+  def set_post
+    post = Post.find(params[:post_id])
   end
 end
 
