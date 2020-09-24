@@ -31,17 +31,20 @@
                   <%= link_to post_like_path(post.id), data: { method: 'delete' } do %>
                     <i class="fas fa-heart"></i>
                   <% end %>
-                  <span></span>
+                  <span>
+                  <% if post.likes.count > 0 %>
+                    <%= post.likes.count %>
+                  <% end %>
+                  </span>
                 <% else %>
                   <%= link_to post_like_path(post.id), data: { method: 'post' } do %>
                     <i class="far fa-heart"></i>
                   <% end %>
-                  <span></span>
-                <% end %>
-              </li>
-              <li>
-                <% if post.likes.count > 0 %>
-                  <%= post.likes.count %>
+                  <span>
+                  <% if post.likes.count > 0 %>
+                    <%= post.likes.count %>
+                  <% end %>
+                  </span>
                 <% end %>
               </li>
             </ul>
