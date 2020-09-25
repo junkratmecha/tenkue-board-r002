@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :confirm_user, only: [:edit]
 
   def index
-    @posts = Post.all.includes(:user)
+    @posts = Post.all.page(params[:page]).per(5)
   end
   
   def new
