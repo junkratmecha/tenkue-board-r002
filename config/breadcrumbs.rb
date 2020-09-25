@@ -2,6 +2,9 @@ crumb :root do
   link "投稿一覧", root_path
 end
 
+crumb :post do
+  link "投稿詳細", post_path
+end
 # crumb :projects do
 #   link "Projects", projects_path
 # end
