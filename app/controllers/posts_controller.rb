@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_post, only: [:edit, :update, :show]
   before_action :confirm_user, only: [:edit]
 
