@@ -9,9 +9,7 @@ Rails.application.routes.draw do
 
   root to: 'posts#index'
   
-  resources :posts
-
-  resources :posts, only: [:index, :new, :create] do
+  resources :posts do
     resource :like, only: [:create, :destroy]
   end
 end
