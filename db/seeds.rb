@@ -19,3 +19,7 @@ Post.create!(user_id: 1,
              content: 'hogehoge')
 Post.create!(user_id: 2,
              content: 'はじめまして')
+Post.create!(user_id: 2,
+             content: 'はじめまして')
+Post.create!(user_id: 2,
+             content: 'はじめまして')                          
