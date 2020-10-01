@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create!(name:  "Example User",
              email: "example@tenkue.com",
-             password:              "foobar",
-             password_confirmation: "foobar")
+             password:              "foobaryeah1",
+             password_confirmation: "foobaryeah1")
 
 User.create!(name:  "Junkrat",
              email: "junkrat@tenkue.com",
-             password:              "junkrat",
-             password_confirmation: "junkrat")
+             password:              "junkratfoo2",
+             password_confirmation: "junkratfoo2")
 
 Post.create!(user_id: 1,
              content: 'hogehoge')
