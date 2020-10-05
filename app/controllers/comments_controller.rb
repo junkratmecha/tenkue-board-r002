@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new
+    @comment = Comment.new(comment_params)
     @comment.save ? (redirect_to post_path(@comment.post_id)):(redirect_to post_path(@comment.post_id), alert: 'コメントを(140文字以内で)入力してください。')
   end
 
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment.update? (redirect_to post_path(@post.id)):(render :edit)
+    @comment.update(comment_params) ? (redirect_to post_path(@post.id)):(render :edit)
   end
 
   def destroy
@@ -33,4 +33,11 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
   end
 
+  def comment_params
+    params.require(:comment).permit(
+      :text,
+      :user_id,
+      :post_id,
+    )
+  end
 end
