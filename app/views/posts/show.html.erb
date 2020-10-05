@@ -40,7 +40,7 @@
           <div class="post_detail__bottom_box__admin_actions">
             <% if @post.user == current_user %>
               <%= link_to '編集', edit_post_path(@post) %>
-              <%= link_to '削除', comment(@post), data: { method: 'delete', confirm: '本当に削除しますか？'} %>
+              <%= link_to '削除', post_path(@post.id), data: { method: 'delete', confirm: '本当に削除しますか？'} %>
             <% end %>
           </div>
         </div>
